@@ -3,8 +3,8 @@ import { Meta, Story } from "@storybook/react";
 import { FormActions, FormErrors } from "./types";
 import { Form } from "./Form";
 import { Field } from "../Field";
-import { sleep } from "./util";
 import { Button } from "../Button/Button";
+import { sleep } from "../util";
 
 const meta: Meta = {
   title: "Form",
