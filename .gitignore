@@ -248,3 +248,5 @@ storybook-static/
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,node,vscode,jetbrains+all,storybookjs
+
+build/
