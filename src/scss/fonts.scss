@@ -1,0 +1,68 @@
+@use "../scss/vars";
+
+$fonts: (
+  display1: (
+    font-weight: bold,
+    font-size: 64px,
+    line-height: 77px
+  ),
+  display2: (
+    font-weight: normal,
+    font-size: 56px,
+    line-height: 68px
+  ),
+  heading1: (
+    font-weight: bold,
+    font-size: 40px,
+    line-height: 48px
+  ),
+  heading2: (
+    font-weight: bold,
+    font-size: 32px,
+    line-height: 39px
+  ),
+  heading3: (
+    font-weight: bold,
+    font-size: 28px,
+    line-height: 34px
+  ),
+  heading4: (
+    font-weight: bold,
+    font-size: 24px,
+    line-height: 29px
+  ),
+  heading5: (
+    font-weight: bold,
+    font-size: 20px,
+    line-height: 24px
+  ),
+  heading6: (
+    font-weight: bold,
+    font-size: 16px,
+    line-height: 19px
+  ),
+  body: (
+    font-weight: normal,
+    font-size: 16px,
+    line-height: 19px
+  ),
+  body-small: (
+    font-weight: normal,
+    font-size: 14px,
+    line-height: 17px
+  ),
+  capitalised: (
+    font-weight: 600,
+    font-size: 14px,
+    line-height: 17px,
+    text-transform: uppercase
+  )
+);
+
+@mixin font($font) {
+  @include vars.var(color, col-dark-500);
+
+  @each $property, $value in map-get($fonts, $font) {
+    #{$property}: #{$value};
+  }
+}
