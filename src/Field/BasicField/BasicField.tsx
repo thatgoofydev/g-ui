@@ -1,6 +1,10 @@
 import React from "react";
+import cn from "classnames";
+
 import { useFormField } from "../../Form/useFormField";
 import { BaseFieldProps } from "../types";
+
+import sharedStyles from "../field-shared.module.scss";
 
 type BaseInputSupportedTypes =
   | "date"
@@ -24,6 +28,7 @@ const BasicField = ({
   name,
   label,
   placeholder,
+  disabled,
   "data-testid": dataTestId
 }: BasicFieldProps) => {
   const formField = useFormField(name);
@@ -33,7 +38,7 @@ const BasicField = ({
     value,
     error,
     showError,
-    disabled,
+    disabled: disabledByForm,
     onChange,
     onFocus,
     onBlur
@@ -43,9 +48,19 @@ const BasicField = ({
     onChange(event.target.value);
   };
 
+  const isDisabled = disabled || disabledByForm;
+
+  const fieldClasses = cn({
+    [sharedStyles.field]: true,
+    [sharedStyles.disabled]: isDisabled,
+    [sharedStyles.error]: showError
+  });
+  const labelClasses = cn(sharedStyles.label);
+  const inputClasses = cn(sharedStyles.input);
+
   return (
-    <div>
-      <label>{label}</label>
+    <div className={fieldClasses}>
+      <label className={labelClasses}>{label}</label>
       <input
         id={name}
         name={name}
@@ -55,11 +70,12 @@ const BasicField = ({
         onChange={handleInputChange}
         onFocus={onFocus}
         onBlur={onBlur}
-        disabled={disabled}
+        disabled={isDisabled}
         data-testid={dataTestId}
         autoComplete="off"
+        className={inputClasses}
       />
-      {showError && <p>{error}</p>}
+      {showError && <p className={sharedStyles.subtext}>{error}</p>}
     </div>
   );
 };

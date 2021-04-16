@@ -1,0 +1,75 @@
+@use "../scss/vars";
+@use "../scss/stacks";
+@use "../scss/fonts";
+
+.field {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  padding-left: 8px;
+  @include vars.var(color, col-dark-300);
+  @include fonts.font(body-small);
+}
+
+.input {
+  display: block;
+  outline: none;
+  padding: 8px 12px;
+  width: 450px; // TODO might need to change in the future
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+
+  @include vars.var(color, col-dark-400);
+  @include vars.var(background, col-light-100);
+  @include vars.var(border-color, col-dark-200);
+  @include vars.var(border-radius, border-radius);
+  @include stacks.level-1();
+  @include fonts.font(body);
+
+  &:focus,
+  .success,
+  .error {
+    border-width: 1.5px;
+  }
+
+  &:focus {
+    @include vars.var(border-color, col-primary-main);
+  }
+
+  &::placeholder {
+    @include vars.var(color, col-dark-200);
+  }
+}
+
+.subtext {
+  margin: 0px;
+  margin-top: 2px;
+  padding-left: 8px;
+
+  @include fonts.font(body-small);
+  @include vars.var(color, col-error-500);
+}
+
+.disabled {
+  .label {
+    @include vars.var(color, col-dark-200);
+  }
+
+  .input {
+    cursor: not-allowed;
+    @include vars.var(background, col-light-500);
+  }
+}
+
+// .success {
+//   @include vars.var(border-color, col-success-500);
+// }
+
+.error {
+  .input {
+    @include vars.var(border-color, col-error-500);
+  }
+}

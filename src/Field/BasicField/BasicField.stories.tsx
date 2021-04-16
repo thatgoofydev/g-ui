@@ -7,7 +7,7 @@ import { FormActions } from "../../Form/types";
 import { Button } from "../../Button";
 
 const meta: Meta = {
-  title: "Form/Fields",
+  title: "Form/Fields/Basic",
   component: Field
 };
 
@@ -26,6 +26,8 @@ interface IFormModel {
   url: string;
   week: string;
 }
+
+/* BasicField :: types */
 
 const BasicFieldStory: Story = (_) => {
   const initialValues: IFormModel = {
@@ -69,7 +71,7 @@ const BasicFieldStory: Story = (_) => {
       <Field type="number" name="number" label="Number" />
       <Field type="password" name="password" label="Password" />
       <Field type="search" name="search" label="Search" />
-      <Field type="tel" name="tel" label="Tel" />
+      <Field type="tel" name="tel" label="Tel" placeholder="tel nr." />
       <Field type="text" name="text" label="Text" />
       <Field type="time" name="time" label="Time" />
       <Field type="url" name="url" label="Url" />
@@ -81,5 +83,39 @@ const BasicFieldStory: Story = (_) => {
 };
 BasicFieldStory.storyName = "Basic";
 
+/* BasicField :: states */
+
+interface ISimpleFormModel {
+  defaultText: string;
+  placeholderText: string;
+  disabledText: string;
+}
+
+const BasicFieldStateStory: Story = (_) => {
+  const initialValues: ISimpleFormModel = {
+    defaultText: "",
+    placeholderText: "",
+    disabledText: ""
+  };
+
+  return (
+    <Form
+      initialValues={initialValues}
+      onSubmit={() => Promise.resolve()}
+      onValidate={() => {}}
+    >
+      <Field type="text" name="defaultText" label="Default" />
+      <Field
+        type="text"
+        name="placeholderText"
+        label="Placeholder"
+        placeholder="Enter some text..."
+      />
+      <Field type="text" name="disabledText" label="Disabled" disabled />
+    </Form>
+  );
+};
+BasicFieldStateStory.storyName = "States";
+
 export default meta;
-export { BasicFieldStory };
+export { BasicFieldStory, BasicFieldStateStory };
