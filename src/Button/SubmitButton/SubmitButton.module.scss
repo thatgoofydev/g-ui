@@ -1,8 +1,6 @@
 @use "../../scss/vars.scss";
 
 .button {
-  transition: background-color 0.5s;
-
   .icon {
     @include vars.var(fill, col-light-200);
   }
@@ -11,6 +9,7 @@
 .submitting {
   cursor: default;
   position: relative;
+  transition: background-color 0.45s;
 
   &:hover {
     @include vars.var(background-color, col-primary-main);
