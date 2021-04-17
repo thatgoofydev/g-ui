@@ -41,8 +41,8 @@ const BasicFormStory: Story = (_) => {
   };
 
   const onSubmit = async (values: IFormModel, actions: FormActions) => {
+    await sleep(1500);
     alert(JSON.stringify(values, null, 2));
-    await sleep(1000);
     await actions.displaySuccess();
   };
 
@@ -99,8 +99,8 @@ const DeepPropFieldStory: Story = (_) => {
     values: IDeepPropsFormModel,
     actions: FormActions
   ) => {
+    await sleep(1500);
     alert(JSON.stringify(values, null, 2));
-    await sleep(1000);
     await actions.displaySuccess();
   };
 

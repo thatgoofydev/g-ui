@@ -5,6 +5,7 @@ import { Form } from "../../Form/Form";
 import { FormErrors } from "../../Form";
 import { FormActions } from "../../Form/types";
 import { Button } from "../../Button";
+import { sleep } from "../../util";
 
 const meta: Meta = {
   title: "Form/Fields/Basic",
@@ -53,6 +54,7 @@ const BasicFieldStory: Story = (_) => {
   };
 
   const onSubmit = async (values: IFormModel, actions: FormActions) => {
+    await sleep(1500);
     alert(JSON.stringify(values, null, 2));
     await actions.displaySuccess();
   };
