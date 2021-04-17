@@ -25,7 +25,7 @@ const BasicButtonStory: Story = (_) => {
     </>
   );
 };
-BasicButtonStory.storyName = "Basic";
+BasicButtonStory.storyName = "default";
 
 export default meta;
 export { BasicButtonStory };

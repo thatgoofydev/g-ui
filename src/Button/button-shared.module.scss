@@ -3,6 +3,7 @@
 @use "../scss/fonts";
 
 .button {
+  cursor: pointer;
   border: none;
   outline: none;
   padding: 7px 24px;
@@ -32,7 +33,7 @@
 }
 
 .disabled {
-  cursor: not-allowed;
+  cursor: default;
 
   @include vars.var(background-color, col-light-500);
 

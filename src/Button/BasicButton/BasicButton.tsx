@@ -7,6 +7,7 @@ import sharedStyles from "../button-shared.module.scss";
 
 export type BasicButtonProps = BaseButtonProps & {
   type?: never;
+  style?: "solid" | "outline";
   onClick: () => void;
 };
 
