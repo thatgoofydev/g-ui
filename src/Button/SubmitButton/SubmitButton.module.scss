@@ -1,0 +1,81 @@
+@use "../../scss/vars.scss";
+
+.button {
+  transition: background-color 0.5s;
+
+  .icon {
+    @include vars.var(fill, col-light-200);
+  }
+}
+
+.submitting {
+  cursor: default;
+  position: relative;
+
+  &:hover {
+    @include vars.var(background-color, col-primary-main);
+  }
+
+  .label {
+    color: transparent;
+  }
+}
+
+.success {
+  @include vars.var(background-color, col-success-500);
+
+  &:hover {
+    @include vars.var(background-color, col-success-500);
+  }
+
+  &:focus {
+    @include vars.var(background-color, col-success-500);
+  }
+
+  &:focus {
+    @include vars.var(background-color, col-success-500);
+  }
+}
+
+.error {
+  @include vars.var(background-color, col-error-500);
+
+  &:hover {
+    @include vars.var(background-color, col-error-500);
+  }
+
+  &:focus {
+    @include vars.var(background-color, col-error-500);
+  }
+
+  &:focus {
+    @include vars.var(background-color, col-error-500);
+  }
+}
+
+.icon,
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.spinner {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border-width: 2.5px;
+  border-style: solid;
+
+  @include vars.var(border-color, col-light-200);
+
+  border-left-color: transparent;
+  animation: spinner-rotate 0.75s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}
