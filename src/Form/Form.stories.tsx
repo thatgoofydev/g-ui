@@ -42,9 +42,8 @@ const BasicFormStory: Story = (_) => {
 
   const onSubmit = async (values: IFormModel, actions: FormActions) => {
     alert(JSON.stringify(values, null, 2));
+    await sleep(1000);
     await actions.displaySuccess();
-    await sleep(1500);
-    await actions.displayError();
   };
 
   return (
@@ -101,9 +100,8 @@ const DeepPropFieldStory: Story = (_) => {
     actions: FormActions
   ) => {
     alert(JSON.stringify(values, null, 2));
+    await sleep(1000);
     await actions.displaySuccess();
-    await sleep(1500);
-    await actions.displayError();
   };
 
   return (
