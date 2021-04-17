@@ -1,0 +1,84 @@
+@use "../scss/vars";
+@use "../scss/stacks";
+@use "../scss/fonts";
+
+.button {
+  border: none;
+  outline: none;
+  padding: 7px 24px;
+  height: 32px;
+  display: block;
+  margin-bottom: 8px;
+
+  @include fonts.font(body);
+  @include vars.var(border-radius, border-radius);
+  @include vars.var(color, col-light-100);
+  @include vars.var(background-color, col-primary-main);
+
+  &:hover {
+    @include vars.var(background-color, col-primary-light);
+  }
+
+  &:active {
+    @include vars.var(background-color, col-primary-dark);
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px #{vars.val(col-primary-light)};
+    box-shadow: 0px 0px 0px 2px var(--col-primary-light);
+
+    @include vars.var(background-color, col-primary-dark);
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+
+  @include vars.var(background-color, col-light-500);
+
+  &:hover {
+    @include vars.var(background-color, col-light-500);
+  }
+
+  &.outline {
+    @include vars.var(color, col-dark-100);
+    @include vars.var(border-color, col-light-500);
+    @include vars.var(background-color, col-light-200);
+
+    &:hover {
+      @include vars.var(color, col-dark-100);
+      @include vars.var(border-color, col-light-500);
+      @include vars.var(background-color, col-light-200);
+    }
+  }
+}
+
+.outline {
+  border-style: solid;
+  border-width: 1.5px;
+  background-color: transparent;
+
+  @include vars.var(color, col-primary-main);
+  @include vars.var(border-color, col-primary-main);
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent;
+  }
+
+  &:hover {
+    @include vars.var(color, col-primary-light);
+    @include vars.var(border-color, col-primary-light);
+  }
+
+  &:active {
+    @include vars.var(color, col-primary-dark);
+    @include vars.var(border-color, col-primary-dark);
+  }
+
+  &:focus {
+    @include vars.var(color, col-primary-dark);
+    @include vars.var(border-color, col-primary-dark);
+  }
+}

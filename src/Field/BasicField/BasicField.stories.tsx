@@ -11,7 +11,7 @@ const meta: Meta = {
   component: Field
 };
 
-/* BasicFieldStory */
+/* BasicField :: types */
 
 interface IFormModel {
   date: string;
@@ -26,8 +26,6 @@ interface IFormModel {
   url: string;
   week: string;
 }
-
-/* BasicField :: types */
 
 const BasicFieldStory: Story = (_) => {
   const initialValues: IFormModel = {

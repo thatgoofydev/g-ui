@@ -39,6 +39,10 @@ $vars: (
   #{$property}: var(--#{$variable});
 }
 
+@function val($variable) {
+  @return map-get($vars, $variable);
+}
+
 @mixin includeVars {
   @each $property, $value in $vars {
     --#{$property}: #{$value};
