@@ -35,6 +35,9 @@ const BasicFormStory: Story = (_) => {
     if (!values.name) {
       errors.name = "Name is required";
     }
+    if (new Date(values.date) < new Date()) {
+      errors.date = "Date has to be later than today";
+    }
   };
 
   const onSubmit = async (values: IFormModel, actions: FormActions) => {
