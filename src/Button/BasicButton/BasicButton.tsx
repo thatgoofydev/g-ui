@@ -7,7 +7,15 @@ import sharedStyles from "../button-shared.module.scss";
 
 export type BasicButtonProps = BaseButtonProps & {
   type?: never;
+
+  /**
+   * The style of button to render.
+   */
   style?: "solid" | "outline";
+
+  /**
+   * The function to execute when the button is clicked.
+   */
   onClick: () => void;
 };
 

@@ -13,9 +13,18 @@ const icons = {
 } as const;
 
 type IconType = keyof typeof icons;
+
 export type IconProps = {
+  /**
+   * The type of icon to render.
+   */
   icon: IconType;
+
+  /**
+   * The size (in px) of the icon.
+   */
   size?: number;
+
   className?: string;
 };
 

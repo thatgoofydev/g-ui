@@ -20,6 +20,9 @@ type BaseInputSupportedTypes =
   | "week";
 
 export type BasicFieldProps = BaseFieldProps & {
+  /**
+   * The type of the input field.
+   */
   type: BaseInputSupportedTypes;
 };
 
