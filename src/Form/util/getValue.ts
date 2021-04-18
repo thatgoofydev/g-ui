@@ -1,4 +1,4 @@
-import { PartialWithType } from "../../util";
+import { DeepPartialWithValueType } from "../../util";
 
 const getValueInternal = <T>(object: T, path: string[]): any | undefined => {
   const [currentPart, ...restParts] = path;
@@ -15,7 +15,7 @@ const getValueInternal = <T>(object: T, path: string[]): any | undefined => {
 };
 
 export const getValue = <T, U>(
-  object: PartialWithType<T, U>,
+  object: DeepPartialWithValueType<T, U>,
   path: string
 ): U | undefined => {
   const parts = path.split(".");

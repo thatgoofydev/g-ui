@@ -1,7 +1,7 @@
-import { PartialWithType } from "../util";
+import { DeepPartialWithValueType } from "../util";
 
-export type FormErrors<T> = PartialWithType<T, string>;
-export type FormBooleans<T> = PartialWithType<T, boolean>;
+export type FormErrors<T> = DeepPartialWithValueType<T, string>;
+export type FormBooleans<T> = DeepPartialWithValueType<T, boolean>;
 
 export type FormState<T> = {
   values: T;

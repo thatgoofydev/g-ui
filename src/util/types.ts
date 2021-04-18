@@ -1,3 +1,3 @@
-export type PartialWithType<T, U> = {
-  [P in keyof T]?: P extends Object ? PartialWithType<T[P], U> : U;
+export type DeepPartialWithValueType<T, U> = {
+  [P in keyof T]?: P extends Object ? DeepPartialWithValueType<T[P], U> : U;
 };

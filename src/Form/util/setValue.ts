@@ -1,10 +1,10 @@
-import { PartialWithType } from "../../util";
+import { DeepPartialWithValueType } from "../../util";
 
 const setValueInternal = <T, U>(
-  object: PartialWithType<T, U>,
+  object: DeepPartialWithValueType<T, U>,
   path: string[],
   value: U
-): PartialWithType<T, U> => {
+): DeepPartialWithValueType<T, U> => {
   const [currentPart, ...restParts] = path;
 
   if (restParts.length == 0) {
@@ -21,10 +21,10 @@ const setValueInternal = <T, U>(
 };
 
 export const setValue = <T, U>(
-  object: PartialWithType<T, U>,
+  object: DeepPartialWithValueType<T, U>,
   path: string,
   value: U
-): PartialWithType<T, U> => {
+): DeepPartialWithValueType<T, U> => {
   const parts = path.split(".");
   return setValueInternal(object, parts, value);
 };
