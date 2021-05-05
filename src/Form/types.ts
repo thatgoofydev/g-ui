@@ -1,9 +1,12 @@
 import { DeepPartialWithValueType } from "../util";
 
-export type FormErrors<T> = DeepPartialWithValueType<T, string>;
-export type FormBooleans<T> = DeepPartialWithValueType<T, boolean>;
+export type FormErrors<T extends object> = DeepPartialWithValueType<T, string>;
+export type FormBooleans<T extends object> = DeepPartialWithValueType<
+  T,
+  boolean
+>;
 
-export type FormState<T> = {
+export type FormState<T extends object> = {
   values: T;
   errors: FormErrors<T>;
   touched: FormBooleans<T>;
@@ -11,8 +14,8 @@ export type FormState<T> = {
   submitStatus: FormSubmitStatus;
 };
 
-export type FormContextState<T> = FormState<T> & {
-  setFieldValue: (name: string, value: string) => void;
+export type FormContextState<T extends object> = FormState<T> & {
+  setFieldValue: (name: string, value: string | any[]) => void;
   setFieldTouched: (name: string, value: boolean) => void;
   setFieldFocused: (name: string, value: boolean) => void;
 };

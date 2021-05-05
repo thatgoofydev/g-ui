@@ -9,18 +9,18 @@ import {
 import { hasError, setValue, setAllValues } from "./util";
 import { deepCopy, sleep } from "../util";
 
-export type FormStateProps<T> = {
+export type FormStateProps<T extends object> = {
   initialValues: T;
   onValidate: (values: T, actions: FormActions, errors: FormErrors<T>) => void;
   onSubmit: (values: T, actions: FormActions) => Promise<void>;
 };
 
-type FormStateResult<T> = {
+type FormStateResult<T extends object> = {
   contextValue: FormContextState<T>;
   handleSubmit: FormEventHandler<HTMLFormElement>;
 };
 
-const getInitialState = <T>(initialValues: T): FormState<T> => {
+const getInitialState = <T extends object>(initialValues: T): FormState<T> => {
   const errors = setAllValues(deepCopy(initialValues), "");
   const touched = setAllValues(deepCopy(initialValues), false);
   const focused = setAllValues(deepCopy(initialValues), false);
@@ -36,7 +36,11 @@ const getInitialState = <T>(initialValues: T): FormState<T> => {
 
 const STATUS_DELAY = 1600;
 
-const useFormState = <T>({
+const newEmptyErrorObject = <T extends object>(values: T): FormErrors<T> => {
+  return setAllValues(deepCopy(values), null);
+};
+
+const useFormState = <T extends object>({
   initialValues,
   onValidate,
   onSubmit
@@ -45,10 +49,11 @@ const useFormState = <T>({
     getInitialState(initialValues)
   );
 
-  const setFieldValue = (name: string, value: string) => {
-    const errors = {};
+  const setFieldValue = (name: string, value: string | any[]) => {
     const values = deepCopy(state.values);
     setValue(values, name, value);
+
+    const errors = newEmptyErrorObject(values);
     onValidate(values, formActions, errors);
 
     setState((prev) => ({
@@ -102,7 +107,7 @@ const useFormState = <T>({
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const errors = {};
+    const errors = newEmptyErrorObject(state.values);
     onValidate(state.values, formActions, errors);
 
     setState((prev) => ({

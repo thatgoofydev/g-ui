@@ -80,7 +80,7 @@ const DeepPropFieldStory: Story = (_) => {
     person: {
       birthday: "1998-09-01",
       address: {
-        street: "Somestreet"
+        street: null
       }
     }
   };

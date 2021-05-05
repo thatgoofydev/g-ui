@@ -1,15 +1,23 @@
 import { FormErrors } from "../types";
 
-export const hasError = <T>(object: FormErrors<T>): boolean => {
-  for (const key in object) {
-    if (typeof object[key] === "object") {
-      if (hasError(object[key])) {
+export const hasError = <T extends object>(object: FormErrors<T>): boolean => {
+  if (!object) {
+    return false;
+  }
+
+  const keys = Object.keys(object);
+
+  for (const key of keys) {
+    const value = object[key];
+
+    if (typeof value === "object") {
+      if (hasError(value)) {
         return true;
       }
-    } else if (object[key]) {
-      // console.log(
-      //   `key: ${key}, value: ${typeof object[key]}, bool ${!!object[key]}`
-      // );
+      continue;
+    }
+
+    if (value) {
       return true;
     }
   }

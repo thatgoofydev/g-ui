@@ -1,9 +1,13 @@
 import { DeepPartialWithValueType } from "../../util";
 
-export const setAllValues = <T, U>(
+export const setAllValues = <T extends object, U>(
   object: DeepPartialWithValueType<T, U>,
   value: U
 ): DeepPartialWithValueType<T, U> => {
+  if (!object) {
+    return object;
+  }
+
   const keys = Object.keys(object);
 
   keys.forEach((key) => {
